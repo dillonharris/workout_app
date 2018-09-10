@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.feature "Showing Friend Workout" do
-
   before do
     @john = User.create(first_name: "John", last_name: "Smith", email: "john@example.com", password: "password")
     @sarah = User.create(first_name: "Sarah", last_name: "Doe", email: "sarah@example.com", password: "password")
@@ -19,7 +18,7 @@ RSpec.feature "Showing Friend Workout" do
 
     click_link "My Lounge"
     click_link @sarah.full_name
-    
+
     expect(page).to have_content(@sarah.full_name + "'s Exercises")
     expect(page).to have_content(@e2.workout)
     expect(page).to have_css("div#chart")

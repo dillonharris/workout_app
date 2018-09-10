@@ -1,13 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature 'Searching for User' do 
-
-	before do 
+RSpec.feature 'Searching for User' do
+	before do
 		@john = User.create(first_name: "John", last_name: "Doe", email: "johndoe@example.com", password: 'password')
 		@sarah = User.create(first_name: "sarah", last_name: "Doe", email: "sarahdoe@example.com", password: 'password')
 	end
 
-	scenario 'with existing name returns all those users' do 
+	scenario 'with existing name returns all those users' do
 		visit '/'
 
 		fill_in 'search_name', with: "Doe"
@@ -17,5 +16,4 @@ RSpec.feature 'Searching for User' do
 		expect(page).to have_content(@sarah.full_name)
 		expect(current_path).to eq("/dashboard/search")
 	end
-
 end
